@@ -1,0 +1,27 @@
+*{
+  margin: 0;
+  border: 0;
+  padding: 0;
+}
+html,body{
+  height: 100%;
+  width: 100%;
+  background: #333;
+}
+body {
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+.mainContainer{
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color: #eee;
+}
+h3{
+  line-height: 2;
+  margin: 10px auto;
+}
