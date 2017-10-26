@@ -6,61 +6,54 @@ const {
   auth
 } = require('../utils/auth');
 const config = require('../config/config');
+const dbUtils = require('../utils/db');
 
 
-// 链接数据库
-
-var connection = mysql.createConnection(config.mysql);
+// 定义数据库查询语句SQL
 var sqlList = {
-  list: 'select * from user order by id desc limit 4',
-  list2: 'select * from user limit 4 order by id desc',
-  insert:'INSERT INTO user(name) VALUES(?)'
-}
-connection.connect();
-
+  list: 'select * from user order by id desc limit 20',
+  insert: 'INSERT INTO user(name) VALUES(?)'
+};
 
 /* GET users listing. */
 router.get('/', function (req, res, next) {
   res.send('respond with a resource');
 });
 
-router.get('/test', auth, function (req, res, next) {
-  let data = {
-    status: 1,
-    msg: 'api test ok',
-    time: new Date().getTime()
-  }
-  res.json(data);
-});
-
+/**
+ * 获取用户列表
+ */ 
 router.get('/list', function (req, res, next) {
   let data;
-  connection.query(sqlList.list, function (error, results, fields) {
-    if (error) {} else {
-      data={
-        status:1,
-        msg:"success",
-        obj:results
+  dbUtils
+    .mysqlDB(sqlList.list)
+    .then(results => {
+      data = {
+        status: 1,
+        msg: "success",
+        obj: results
       }
-      res.json(data);  
-    }
-  })
+      res.json(data);
+    }).catch(err => {
+      console.log(err);
+    });
 });
 /**
  * 添加用户数据
  */
-router.post('/add',auth, function (req, res, next) {
+router.post('/add', function (req, res, next) {
   let data;
-  let name=req.body.name;
-  connection.query(sqlList.insert, [name],function (error, results, fields) {
-    if (error) {} else {
-      data={
-        status:1,
-        msg:"success"
+  let name = req.body.name;
+  dbUtils
+    .mysqlDB(sqlList.insert, [name])
+    .then(results => {
+      data = {
+        status: 1,
+        msg: "success"
       }
-      res.json(data);  
-    }
-  })
+      res.json(data);
+    })
+    .catch(err => {})
 });
 
 
