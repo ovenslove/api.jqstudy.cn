@@ -36,19 +36,19 @@ router.post('/',xmlparser({trim: false, explicitArray: false}),function(req,res,
   console.log(req.query);
   console.log(req.params);
   let msgData=req.body;
-  data = `<xml><ToUserName>我收到了,你说的是：【${msgData.xml.content}】</ToUserName></xml>`;
-  // let backMsg=`
-  //     <xml>
-  //       <ToUserName>${msgData.xml.tousername}</ToUserName>
-  //       <FromUserName>${msgData.xml.tousername}</FromUserName>
-  //       <CreateTime>${(new Date().getTime()) / 1000}</CreateTime>
-  //       <MsgType>${msgData.xml.msgtype}</MsgType>
-  //       <Content>我收到了,你说的是：【${msgData.xml.content}】</Content>
-  //     </xml>
-  // `;
+  // data = `<xml><ToUserName>我收到了,你说的是：【${msgData.xml.content}】</ToUserName></xml>`;
+  let backMsg=`
+      <xml>
+        <ToUserName>${msgData.xml.fromusername}</ToUserName>
+        <FromUserName>gh_b6801728ad71</FromUserName>
+        <CreateTime>${(new Date().getTime()) / 1000}</CreateTime>
+        <MsgType>${msgData.xml.msgtype}</MsgType>
+        <Content>我收到了,你说的是：【${msgData.xml.content}】</Content>
+      </xml>
+  `;
   
   res.writeHead(200, {'Content-Type': 'application/xml'});
-  res.end(data);
+  res.end(backMsg);
 });
 
 module.exports = router;
