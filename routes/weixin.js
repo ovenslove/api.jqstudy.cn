@@ -1,7 +1,7 @@
 var express = require('express');
 var crypto = require('crypto');
 var router = express.Router();
-
+var xmlparser = require('express-xml-bodyparser');
 /* GET home page. */
 router.get('/', function(req, res, next) {
   console.log(req.query);
@@ -31,7 +31,7 @@ router.get('/', function(req, res, next) {
   }
 });
 
-router.post('/',function(req,res,next){
+router.post('/',xmlparser({trim: false, explicitArray: false}),function(req,res,next){
   console.log(res.body);
   res.end();
 });
