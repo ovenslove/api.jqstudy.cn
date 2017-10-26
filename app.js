@@ -11,6 +11,7 @@ var session= require('express-session');
  */
 /*--------------------------------------------*/ 
 var index = require('./routes/index');
+var weixin = require('./routes/weixin');
 var users = require('./routes/users');
 var login = require('./routes/login');
 /*--------------------------------------------*/ 
@@ -39,6 +40,7 @@ app.use(session({
  */
 /*--------------------------------------------*/ 
 app.use('/', index);
+app.use('/wx', weixin);
 app.use('/users', users);
 app.use('/login', login);
 /*--------------------------------------------*/ 
