@@ -33,7 +33,10 @@ router.get('/', function(req, res, next) {
 
 router.post('/',xmlparser({trim: false, explicitArray: false}),function(req,res,next){
   console.log(req.body);
-  res.end();
+  let msgData=req.body;
+  data = `<xml><ToUserName>我收到了,你说的是：【${msgData.xml.content}】</ToUserName></xml>`;
+  res.writeHead(200, {'Content-Type': 'application/xml'});
+  res.end(data);
 });
 
 module.exports = router;
