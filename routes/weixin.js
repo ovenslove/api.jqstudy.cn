@@ -32,7 +32,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/',xmlparser({trim: false, explicitArray: false}),function(req,res,next){
-  console.log(res.body);
+  console.log(req.body);
   res.end();
 });
 
