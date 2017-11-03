@@ -1,0 +1,61 @@
+extends layout/layout-admin
+
+block links
+  link(rel='stylesheet', href='/css/style-interface-list.css')  
+
+block content
+  .mainContainer
+    +breadcrumb(menuData.breadcrumbData)
+    table.ui.unstackable.table
+      thead
+        tr
+          th ID
+          th 接口名称
+          th 接口地址
+          th 请求次数
+          th 状态
+          th.right.aligned 操作
+      tbody
+        -for(let i in interfaceData)
+          tr
+              td #{interfaceData[i].id}
+              td #{interfaceData[i].name}
+              td #{interfaceData[i].url}
+              td #{interfaceData[i].counts}
+              td #{interfaceData[i].status==1?'OK':'NO'}
+              td.right.aligned
+                a(href='/admin/interface/detail/'+interfaceData[i].id).ui.button.mini 查看
+                a.ui.button.mini 编辑
+      tfoot
+        tr
+          th(colspan="6")
+            .ui.right.floated.pagination.menu
+              -if(pageData.curPageNumber<=6)
+                a.icon.item
+                  i.left.chevron.icon
+                -for(let i=1; i<pageData.curPageNumber;i++)
+                  a.item #{i}
+                a.item ...
+                a.item #{pageData.maxPageNumber} 
+                a.icon.item
+                  i.right.chevron.icon
+              -else if(pageData.curPageNumber<=pageData.maxPageNumber-6)
+                a.icon.item
+                  i.left.chevron.icon
+                a.item 1
+                a.item ...
+                -for(let i=pageData.curPageNumber-2; i<=pageData.curPageNumber+2;i++)
+                  a.item #{i}
+                a.item ...
+                a.item #{pageData.maxPageNumber}                
+                a.icon.item
+                  i.right.chevron.icon
+              -else
+                a.icon.item
+                  i.left.chevron.icon
+                a.item 1
+                a.item ...
+                -for(let i=pageData.curPageNumber; i<=pageData.maxPageNumber;i++)
+                  a.item #{i}
+                a.icon.item
+                  i.right.chevron.icon

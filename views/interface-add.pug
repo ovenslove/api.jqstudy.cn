@@ -1,0 +1,114 @@
+extends layout/layout-admin
+
+block links
+  link(rel='stylesheet', href='/css/style-interface-add.css')  
+  link(rel="stylesheet", href="/bower_components/jsoneditor/dist/jsoneditor.min.css")
+
+block content
+  .mainContainer
+    +breadcrumb(menuData.breadcrumbData)
+    section.panleContainer
+      .panleHeader
+        .panleName 接口信息
+        .panleTips
+      .panleBody
+        form.formContainer(action="")
+          .simInputContainer
+            label(for="") 接口名称
+            input.interfaceName(type="text" placeholder="请输入接口名称",value="测试接口")
+          .simInputContainer
+            label(for="") 接口地址
+            input.interfaceUrl(type="text" placeholder="请输入接口地址",value="/interface/test")
+          .simInputContainer
+            label(for="") 请求类型
+            select.interfaceType(name="")
+              option(value="GET" ) GET
+              option(value="POST" selected) POST
+              option(value="OPTION") OPTION
+              option(value="DELETE") DELETE
+
+    section.panleContainer.parameterContainer.requestParameterContainer
+      .panleHeader
+        .panleName 请求参数
+      .panleBody
+        table.ui.selectable.collapsing.table.parameterContainer
+          thead
+            tr
+              th 参数名
+              th 数据类型
+              th 是否必须
+              th 默认值
+              th 备注
+              th 操作
+          tbody
+            -for(let i=0;i<5;i++)
+              tr.simRequestParameter
+                td
+                  input.parameterName(type="text" placeholder="参数名",value='parameter'+i)
+                td 
+                  select.parameterType(name="")
+                    option(value="String" selected) String
+                    option(value="Bollean") Bollean
+                    option(value="Number") Number
+                    option(value="Object") Object
+                td 
+                  select.parameterRequired(name="")
+                    option(value="true" selected) 是
+                    option(value="false") 否
+                td 
+                  input.parameterDefault(type="text" placeholder="默认值",value="无")
+                td 
+                  input.parameterRemarks(type="text" placeholder="备注",value="测试参数")
+                td 
+                  button.ui.button.parameterDeleteBtn()  删除
+            tfoot
+              tr
+                th(colspan="6")
+                  button.ui.button.requestParameterAddBtn 新增字段
+    section.panleContainer.parameterContainer.responseParameterContainer
+      .panleHeader
+        .panleName 响应参数
+      .panleBody
+        table.ui.celled.line.fixed.single.table.parameterContainer
+          thead
+            tr
+              th 参数名
+              th 数据类型
+              th 备注
+              th 操作
+          tbody
+            -for(let i=0;i<5;i++)
+              tr.simResponseParameter
+                td
+                  input.parameterName(type="text" placeholder="参数名",value='parameter'+i)
+                td 
+                  select.parameterType(name="")
+                    option(value="String") String
+                    option(value="Bollean") Bollean
+                    option(value="Number") Number
+                    option(value="Object" selected) Object
+                td 
+                  input.parameterRemarks(type="text" placeholder="备注",value="返回结果对象")
+                td 
+                  button.ui.button.parameterDeleteBtn()  删除
+            tfoot
+              tr
+                th(colspan="6")
+                  button.ui.button.responseParameterAddBtn 新增字段
+
+    section.panleContainer
+      .panleHeader
+        .panleName 接口返回示例
+      .panleBody
+        .editorContainer
+          #responseJsonEditor
+    
+    section.panleContainer
+      .panleBody
+        button.ui.button.submitBtn 确认添加
+        button.ui.button.cancleBtn 重置输入
+      
+block scripts
+  script(src="/bower_components/jsoneditor/dist/jsoneditor.min.js")
+  script(src="/bower_components/axios/dist/axios.min.js")
+  script(src="/js/interface-add.js")

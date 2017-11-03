@@ -1,0 +1,308 @@
+@charset "UTF-8";
+html, body {
+  width: 100%;
+  height: 100%;
+}
+
+.adminMainContainer {
+  width: 100%;
+  height: 100%;
+  background: #f5f5f5;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.adminMainContainer .topMenuBarContainer {
+  width: 100%;
+  height: 50px;
+  background: #333;
+  position: relative;
+}
+
+.adminMainContainer .topMenuBarContainer header.headerContainer {
+  color: #fff;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.adminMainContainer .topMenuBarContainer header.headerContainer .adminNameContainer {
+  width: 150px;
+  height: 100%;
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  padding: 4px;
+  text-align: center;
+}
+
+.adminMainContainer .topMenuBarContainer header.headerContainer .topMenuBodyContainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.adminMainContainer .topMenuBarContainer header.headerContainer .topMenuBodyContainer .menuContainer {
+  width: auto;
+  height: 100%;
+}
+
+.adminMainContainer .topMenuBarContainer header.headerContainer .topMenuBodyContainer .menuContainer ul.listGroup {
+  display: flex;
+  height: 100%;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.adminMainContainer .topMenuBarContainer header.headerContainer .topMenuBodyContainer .menuContainer ul.listGroup li.listItem {
+  list-style: none;
+  height: 100%;
+  width: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+}
+
+.adminMainContainer .topMenuBarContainer header.headerContainer .topMenuBodyContainer .menuContainer ul.listGroup li.listItem a {
+  color: inherit;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  padding: 0 20px;
+}
+
+.adminMainContainer .topMenuBarContainer header.headerContainer .topMenuBodyContainer .menuContainer ul.listGroup li.listItem:hover {
+  background: #444;
+  color: #33ccff;
+}
+
+.adminMainContainer .topMenuBarContainer header.headerContainer .topMenuBodyContainer .userInfoContainer {
+  width: auto;
+  height: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0 10px;
+}
+
+.adminMainContainer .topMenuBarContainer header.headerContainer .topMenuBodyContainer .userInfoContainer .userLogoContainer {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  overflow: hidden;
+  box-sizing: border-box;
+  border: 1px solid #ddd;
+  margin: 0 5px;
+}
+
+.adminMainContainer .topMenuBarContainer header.headerContainer .topMenuBodyContainer .userInfoContainer .userLogoContainer img {
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
+.adminMainContainer .topMenuBarContainer header.headerContainer .topMenuBodyContainer .userInfoContainer .userNameContainer {
+  padding: 0 3px;
+}
+
+.adminMainContainer .topMenuBarContainer header.headerContainer .topMenuBodyContainer .userInfoContainer .userTypeNameContainer {
+  font-size: 12px;
+  height: 20px;
+  background: #33ccdd;
+  padding: 0px 4px;
+  border-radius: 2px;
+}
+
+.adminMainContainer .topMenuBarContainer.color::after {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 4px;
+  width: 100%;
+  background: linear-gradient(to right, #333 200px, #fff, red, orange, yellow, green, cyan, blue, purple);
+  /* 标准的语法 */
+}
+
+.adminMainContainer .adminBodyContainer {
+  width: 100%;
+  height: calc(100% - 50px);
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-flow: row nowrap;
+}
+
+.adminMainContainer .adminBodyContainer .sideMenuContainer {
+  width: 150px;
+  height: 100%;
+  background: #333;
+  flex-shrink: 0;
+  color: #fff;
+  position: relative;
+}
+
+.adminMainContainer .adminBodyContainer .sideMenuContainer .sideMenuBar {
+  width: 100%;
+  height: 40px;
+  background: #333;
+  border-top: 1px solid #555;
+  border-bottom: 1px solid #555;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.adminMainContainer .adminBodyContainer .sideMenuContainer .sideMenuBar:hover {
+  color: #33ccff;
+}
+
+.adminMainContainer .adminBodyContainer .sideMenuContainer.iconBar {
+  width: 40px;
+  background: red;
+}
+
+.adminMainContainer .adminBodyContainer .sideMenuContainer ul.listGroup {
+  width: 100%;
+  height: 200px;
+}
+
+.adminMainContainer .adminBodyContainer .sideMenuContainer ul.listGroup li.listItem {
+  width: 100%;
+  height: 40px;
+  list-style: none;
+  border-bottom: 1px solid #555;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  font-size: 14px;
+  cursor: pointer;
+  box-sizing: border-box;
+  padding: 0 10px 0 10px;
+}
+
+.adminMainContainer .adminBodyContainer .sideMenuContainer ul.listGroup li.listItem:hover {
+  background: #444;
+  color: #33ccff;
+}
+
+.adminMainContainer .adminBodyContainer .sideMenuContainer ul.listGroup li.listItem.active {
+  background: #444;
+  color: #33ccff;
+}
+
+.adminMainContainer .adminBodyContainer .sideMenuContainer ul.listGroup li.listItem a.menuLink {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  align-items: center;
+  justify-content: flex-start;
+  color: inherit;
+}
+
+.adminMainContainer .adminBodyContainer .sideMenuContainer ul.listGroup li.listItem .menuIcon {
+  font-size: 16px;
+  margin: 0 5px;
+  width: 20px;
+}
+
+.adminMainContainer .adminBodyContainer .sideMenuContainer ul.subListGroup {
+  background: #38414b;
+  display: none;
+}
+
+.adminMainContainer .adminBodyContainer .sideMenuContainer ul.subListGroup.active {
+  display: block;
+}
+
+.adminMainContainer .adminBodyContainer .sideMenuContainer ul.subListGroup .listItem {
+  padding-left: 30px !important;
+}
+
+.adminMainContainer .adminBodyContainer .sideMenuContainer ul.subListGroup .listItem.active {
+  background: #555 !important;
+}
+
+.adminMainContainer .adminBodyContainer .sideMenuContainer ul.subListGroup .listItem:hover {
+  background: #555 !important;
+}
+
+.adminMainContainer .adminBodyContainer .mainBodyContainer {
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+}
+
+.adminMainContainer .adminBodyContainer .mainBodyContainer .breadcrumbContainer {
+  width: 100%;
+  height: 30px;
+  background: #fff;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 0 10px;
+  border-radius: 2px;
+}
+
+.adminMainContainer .adminBodyContainer .mainBodyContainer section.panleContainer {
+  width: 100%;
+  height: auto;
+  background: #fff;
+  margin: 10px auto;
+  border-radius: 4px;
+}
+
+.adminMainContainer .adminBodyContainer .mainBodyContainer section.panleContainer .panleHeader {
+  height: 40px;
+  width: 100%;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.adminMainContainer .adminBodyContainer .mainBodyContainer section.panleContainer .panleHeader .panleName {
+  font-size: 14px;
+  color: #333;
+  padding: 0 10px;
+  font-weight: 700;
+}
+
+.adminMainContainer .adminBodyContainer .mainBodyContainer section.panleContainer .panleHeader .panleTips {
+  padding: 0 10px;
+  font-size: 12px;
+}
+
+.adminMainContainer .adminBodyContainer .mainBodyContainer section.panleContainer .panleBody {
+  width: 100%;
+  min-height: 40px;
+  padding: 10px;
+}
+
+.adminMainContainer .adminBodyContainer .mainBodyContainer section.panleContainer .panleFooter {
+  height: 40px;
+  width: 100%;
+  border-top: 1px solid #eee;
+}
+
+.mainContainer {
+  width: 100%;
+  min-height: 100%;
+  box-sizing: border-box;
+  padding: 10px;
+}
+
+/*# sourceMappingURL=public-admin.css.map */

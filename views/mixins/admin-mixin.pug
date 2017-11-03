@@ -1,0 +1,36 @@
+mixin listItem(obj ,pagesName)
+  li.listItem(class=obj.pageName===pagesName[0]?'active':'',class=obj['subMenus']?'list':'')
+    a.menuLink(href=obj['subMenus']?'javascript:void(0);':obj.menuUrl)
+      i.fa.menuIcon(class=obj.menuIcon,aria-hidden="true")
+      p #{obj.menuName }
+  -if(obj['subMenus'])
+    ul.subListGroup(class=pagesName[1]&&obj.pageName===pagesName[0]?'active':'')
+      -for(var j in obj.subMenus)
+        li.listItem(class=obj.subMenus[j].pageName===pagesName[1]?'active':'')
+          a.menuLink(href=obj.subMenus[j].menuUrl)
+            i.fa.menuIcon(class=obj.subMenus[j].menuIcon,aria-hidden="true")
+            p #{obj.subMenus[j].menuName }
+
+mixin breadcrumb(breadcrumb)
+  .ui.breadcrumb.breadcrumbContainer
+    -for(let i=0;i<=breadcrumb.length-1;i++)
+      -if(i<breadcrumb.length-1)
+        a.section(href="javascript:void(0)") #{breadcrumb[i]}
+        .divider  / 
+      -else
+        .active.section #{breadcrumb[i]}
+
+mixin header({systemInfo,userInfo})
+  header.headerContainer
+    .adminNameContainer #{systemInfo.adminName}
+    .topMenuBodyContainer
+      .menuContainer
+        ul.listGroup
+          -for(let i in [1,2,3])
+            li.listItem
+              a(href="#") 顶部菜单
+      .userInfoContainer
+        .userLogoContainer
+          img(src=userInfo.userLogoUrl, alt="")
+        .userNameContainer #{userInfo.userName}
+        .userTypeNameContainer #{userInfo.userTypeName}

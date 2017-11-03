@@ -8,6 +8,7 @@
   "dependencies": {
     "body-parser": "~1.17.1",
     "cookie-parser": "~1.4.3",
+    "cors": "^2.8.4",
     "debug": "~2.6.3",
     "express": "~4.15.2",
     "express-session": "^1.15.6",
@@ -18,5 +19,9 @@
     "mysql": "^2.15.0",
     "pug": "^2.0.0-rc.4",
     "serve-favicon": "~2.4.2"
+  },
+  "devDependencies": {
+    "connect": "^3.6.5",
+    "node-sass-middleware": "^0.11.0"
   }
 }

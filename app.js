@@ -5,12 +5,16 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session= require('express-session');
+var cors = require('cors');
 
+var connect = require('connect');
+var sassMiddleware = require('node-sass-middleware');
 /**
  * 引入路由文件
  */
 /*--------------------------------------------*/ 
 var index = require('./routes/index');
+var admin = require('./routes/admin');
 var weixin = require('./routes/weixin');
 var users = require('./routes/users');
 var login = require('./routes/login');
@@ -28,7 +32,17 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(cors());
+app.use(sassMiddleware({
+  src: path.join(__dirname, 'public'),
+  dest: path.join(__dirname, 'public'),
+  debug:true,
+  indentedSyntax: false, // true = .sass and false = .scss
+  sourceMap: true,
+  outputStyle: 'expanded' //compressed【压缩】 expanded【展开】
+}));
 app.use(express.static(path.join(__dirname, 'public')));
+
 app.use(session({  
   resave: false, //添加 resave 选项  
   saveUninitialized: true, //添加 saveUninitialized 选项  
@@ -42,6 +56,7 @@ app.use(session({
 app.use('/', index);
 app.use('/wx', weixin);
 app.use('/users', users);
+app.use('/admin', admin);
 app.use('/login', login);
 /*--------------------------------------------*/ 
 

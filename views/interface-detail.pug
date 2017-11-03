@@ -1,0 +1,69 @@
+extends layout/layout-admin
+
+block links
+  link(rel='stylesheet', href='/css/style-interface-detail.css')  
+  link(rel="stylesheet", href="/bower_components/jsoneditor/dist/jsoneditor.min.css")
+
+block content
+  .mainContainer
+    +breadcrumb(menuData.breadcrumbData)
+    section.panleContainer
+      .panleHeader
+        .panleName 基本信息
+      .panleBody
+        .simInfoContainer
+          .label 接口名称
+          .value #{interfaceData.name}
+        .simInfoContainer
+          .label 接口地址
+          .value #{interfaceData.url}
+        .simInfoContainer
+          .label 请求类型
+          .value #{interfaceData.type}
+    section.panleContainer
+      .panleHeader
+        .panleName 请求参数
+      .panleBody
+        table.ui.selectable.collapsing.table.parameterContainer
+          thead
+            tr
+              th 参数名
+              th 数据类型
+              th 是否必须
+              th 默认值
+              th 备注
+          tbody
+            -for(let i in interfaceData.reqParams)
+              tr
+                td #{interfaceData.reqParams[i].name}
+                td #{interfaceData.reqParams[i].type}
+                td #{interfaceData.reqParams[i].required}
+                td #{interfaceData.reqParams[i].default}
+                td #{interfaceData.reqParams[i].remarks}
+    section.panleContainer
+      .panleHeader
+        .panleName 响应参数
+      .panleBody
+        table.ui.selectable.collapsing.table.parameterContainer
+          thead
+            tr
+              th 参数名
+              th 数据类型
+              th 备注
+          tbody
+            -for(let i in interfaceData.reqParams)
+              tr
+                td #{interfaceData.reqParams[i].name}
+                td #{interfaceData.reqParams[i].type}
+                td #{interfaceData.reqParams[i].remarks}
+    section.panleContainer
+      .panleHeader
+        .panleName 接口返回示例
+      .panleBody
+        .editorContainer
+          #responseJsonEditor(data-value=interfaceData.resJson)
+  
+block scripts
+  script(src="/bower_components/jsoneditor/dist/jsoneditor.min.js")
+  script(src="/bower_components/axios/dist/axios.min.js")
+  script(src="/js/interface-detail.js")

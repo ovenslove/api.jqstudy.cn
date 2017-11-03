@@ -1,6 +1,10 @@
-function test(a,b){
-    return a+b;
+
+function getMenuData(){
+    let {menuData}= require('../config/menu.config');
+    return menuData;
 }
+
+
 module.exports={
-    test
+    getMenuData
 }
